@@ -17,8 +17,8 @@ char hora[ENTRADAS_MAX][10];
 int posicao_atual = 0;
 int codigo = 0;
 
-char datalocal[15];
-char horalocal[15];
+char datalocal[10];
+char horalocal[10];
 
 void data_hora() {
 
@@ -170,25 +170,34 @@ void ren(char *antigo, char *novo) {
 
 void pwd() {
 
-    char caminho[TAMANHO_MAX];
+    int posicao = posicao_atual;
+    int vetor[1024];
+    int i = 0;
 
-    strcat(caminho, "/");
-
-    int posicao = 0;
-
-    posicao = posicao_atual;
+    if (posicao == 0){
+        printf("%s\n", nome[0]);
+        return;
+    }
 
     while (posicao > 0) {
 
-        strcat(caminho, nome[posicao]);
-        strcat(caminho, "/");
+        vetor[i] = posicao;
 
         posicao = parent[posicao];
+
+        i++;
     }
 
-    printf(" %s ", caminho);
+    i--;
 
+    for (; i >= 0; i--) {
+
+        printf("/%s", nome[vetor[i]]);
+
+    }
     printf("\n");
+
+    return;
 }
 
  void cd(char *parametro) {
@@ -197,7 +206,7 @@ void pwd() {
 
     if (parametro == NULL) {
 
-        printf(" Digite um caminho valido. ou ' -- ' para voltar a raiz.\n");
+        printf(" Digite um caminho valido. ou ' -- ' para voltar ou '..' para ir a pasta raiz.\n");
         return;
     }
 
@@ -239,30 +248,28 @@ void pwd() {
 
 void ls(char *parametro) {
 
-    int i = 0;
-
     if (parametro != NULL && strcmp(parametro, "-l") != 0) {
 
-        printf(" Parametro invalido.\n");
+        printf("Digite 'ls' ou 'ls -l' para mostrar os arquivos deste diretorio.\n", parametro);
         return;
     }
 
-    data_hora();
+    printf("Arquivos...\n");
 
-    printf(" Arquivos...\n");
+    int i = 0;
 
     for (i = 1; i < ENTRADAS_MAX; i++) {
 
         if (parent[i] == posicao_atual) {
 
-            if (parametro == NULL) {
+            if (parametro == NULL){
 
                 printf("- %s\n", nome[i]);
             }
+
             else if (strcmp(parametro, "-l") == 0) {
 
-                printf("-> %s %s '%s'\n", datalocal[i], horalocal[i], nome[i]);
-                return;
+                printf("- %s %s %s\n", nome[i], data[i], hora[i]);
             }
         }
     }
