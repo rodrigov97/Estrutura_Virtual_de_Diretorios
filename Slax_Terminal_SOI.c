@@ -29,7 +29,6 @@ void data_hora() {
     sprintf(datalocal, "%d/%d/%d", data_atual.tm_mday, data_atual.tm_mon + 1, data_atual.tm_year + 1900);
 }
 
-
 void mkdir(char *nomedir) {
 
     int i = 0;
@@ -273,7 +272,7 @@ void debug() {
 
     int i = 0;
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 20; i++) {
 
         printf(" [%i]: %i - [%i]: '%s' - [%i]: %s - [%i]: %s\n", i, parent[i], i, nome[i], i, data[i], i, hora[i]);
     }
@@ -293,6 +292,13 @@ int main() {
         comando = strtok(linha_de_comando," ");
         parametro1 = strtok(NULL," ");
         parametro2 = strtok(NULL,"\0");
+
+        data_hora();
+
+        parent[0] = 0;
+        strcpy(nome[0], "root/");
+        strcpy(data[0], datalocal);
+        strcpy(hora[0], horalocal);
 
         if (strcmp(comando,"mkdir") == 0) {
 
@@ -392,23 +398,14 @@ int setting() {
 
     int i = 0;
 
-    while (i < ENTRADAS_MAX) {
+    for (i = 0; i < 1024; i++) {
 
-        parent[i] = i - 1;
+        parent[i] = -1;
 
         strcpy(nome[i], "");
         strcpy(data[i], "");
         strcpy(hora[i], "");
-
-        i++;
     }
-
-    data_hora();
-
-    parent[0] = 0;
-    strcpy(nome[0], "root/");
-    strcpy(data[0], datalocal);
-    strcpy(hora[0], horalocal);
 
     system("clear");
     main();
