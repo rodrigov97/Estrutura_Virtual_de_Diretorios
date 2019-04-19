@@ -33,13 +33,13 @@ void mkdir(char *nomedir) {
 
     int i = 0;
     int existe = 0;
-
+//nomeação do arquivo
     if (nomedir == NULL) {
 
         printf(" Coloque um nome.\n");
         return;
     }
-
+//requisito para nomeação
     if (strlen(nomedir) > 8) {
 
         printf(" Maximo de 8 letras no nome.\n");
@@ -48,7 +48,7 @@ void mkdir(char *nomedir) {
     for (i = 0; i < ENTRADAS_MAX; i++) {
 
         if (parent[i] == posicao_atual) {
-
+//erro de existência de um mesmo arquivo
             if (strcmp(nomedir, nome[i]) == 0) {
 
                 printf(" Arquivo ja existe.\n");
@@ -72,7 +72,7 @@ void mkdir(char *nomedir) {
 }
 
 void rmdir(char *nomedir) {
-
+//(falta de)inserção do nome do arquivo a excluir
     if(nomedir == NULL) {
 
         printf(" Insira o nome do arquivo a ser excluido.\n");
@@ -87,13 +87,13 @@ void rmdir(char *nomedir) {
         if (parent[i] == posicao_atual) {
 
             if (strcmp(nomedir, nome[i]) == 0) {
-
+//encerra
                 positivo = 1;
                 break;
             }
         }
     }
-
+//diretório inexistente
     if (positivo == 0) {
 
         printf(" O diretorio nao existe.\n");
@@ -122,12 +122,12 @@ void rmdir(char *nomedir) {
 }
 
 void ren(char *antigo, char *novo) {
-
+//falha na inserção do nome do arquivo
     if(antigo == NULL || novo == NULL) {
 
         printf(" Insira o nome do arquivo e o novo nome.\n");
     }
-
+//"                                   "
     if (strlen(novo) > 8) {
 
         printf(" Maximo de 8 letras no nome.\n");
@@ -147,7 +147,7 @@ void ren(char *antigo, char *novo) {
                 positivo = 1;
                 local = i;
             }
-
+//arquivo de nome identico dentro do diretorio
             if (strcmp(novo, nome[i]) == 0) {
 
                 printf(" Ja existe um diretorio neste endereco com o mesmo nome.\n");
@@ -157,7 +157,7 @@ void ren(char *antigo, char *novo) {
     }
 
     if (positivo == 0) {
-
+//diretorio inexistente
         printf(" O diretorio nao existe.\n");
         return;
     }
@@ -203,7 +203,7 @@ void pwd() {
  void cd(char *parametro) {
 
     int i = 0;
-
+//caminho inválido e comandos de saída
     if (parametro == NULL) {
 
         printf(" Digite um caminho valido. ou ' -- ' para voltar ou '..' para ir a pasta raiz.\n");
@@ -238,7 +238,7 @@ void pwd() {
             }
         }
     }
-
+//diretório inexistente
     if (positivo == 0) {
 
             printf(" Diretorio nao encontrado.\n");
@@ -363,7 +363,7 @@ int main() {
             system("cls");
             executei_comando=1;
         }
-
+//"help" para listar os comandos da estrutura virtual
         if (strcmp(comando, "help") == 0) {
 
             printf(" pwd - Exibe a posicao na estrutura de diretorios.");
@@ -376,7 +376,7 @@ int main() {
             printf("\n clear - Limpa a tela.\n");
             executei_comando = 1;
         }
-
+//integrantes
         if (strcmp(comando,"copyright") == 0) {
 
             printf("\n -Isaque Torres\n -Joao Aguirra\n -Mateus Santos\n -Rodrigo Ventura\n\n Copyright 2019-2019 - Sistemas operacionais I\n\n ");
