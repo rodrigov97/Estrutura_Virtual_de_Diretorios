@@ -291,8 +291,8 @@ int content() {
 
                         printf("-- %s\n", nome[i]);
                     }
-                    
-                    if (strcmp(parametro1, "-l") == 0) {
+
+                    else if (strcmp(parametro1, "-l") == 0) {
 
                         printf("-- %s | %s - %s\n", nome[i], data[i], hora[i]);
                     }
