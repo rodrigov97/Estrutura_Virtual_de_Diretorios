@@ -263,7 +263,7 @@ int content() {
 
             if (existe == 1) {
 
-                parent[i] = 0;
+                parent[i] = -1;
                 strcpy(nome[i], "");
                 strcpy(data[i], "");
                 strcpy(hora[i], "");
@@ -311,19 +311,20 @@ int content() {
             printf(" %s\n %s\n", datalocal, horalocal);
         }
 
-        if (strcmp(comando, "debug" ) == 0) {
+        if (strcmp(comando, "local" ) == 0) {
 
             executei_comando=1;
 
             data_hora();
 
-            printf("Posicao: %i | Codigo: %i\n", posicao_atual, codigo);
+            printf("Posicao: %i\n", posicao_atual); 
+            printf("Codigo: %i\n", codigo);
 
             int i;
 
-            for (i = 0; i < 20; i++) {
+            for (i = 0; i < 15; i++) {
 
-                printf("Parent[%i]: %i - Nome[%i]: %s - Data[%i]: %s - Hora[%i]: %s\n", i, parent[i], i, nome[i], i, data[i], i, hora[i]);
+                printf("Pasta pai[%i]: %i - Nome[%i]: %s - %s - %s\n", i, parent[i], i, nome[i], data[i], hora[i]);
             }
         }
 
@@ -343,16 +344,18 @@ int content() {
 
         if (strcmp(comando, "help") == 0) {
 
-            printf(" pwd - Exibe a posicao na estrutura de diretorios.");
             printf("\n mkdir - Cria um diretorio.");
             printf("\n rmdir - Remove um diretorio.");
-            printf("\n cd - Chama o diretorio.");
-            printf("\n ren - Renomeia um diretorio.");
-            printf("\n ls - Lista os arquivos presentes do diretório atual.");
+            printf("\n ren - Renomeia um diretorio.");            
+            printf("\n cd - Chama o diretorio.");            
+            printf("\n pwd - Exibe a posicao na estrutura de diretorios.");            
+            printf("\n ls - Lista os arquivos presentes do diretório atual.");            
+            printf("\n time - Exbe data e horas atuais.");            
+            printf("\n clear - Limpa a tela.");
+            printf("\n local - Mostra os diretorios existesntes e seus enderecos.");   
             printf("\n copyright - Exibe o nome dos autores do programa.");
             printf("\n poweroff - Sai do terminal.");
-            printf("\n time - Exbe data e horas atuais.");
-            printf("\n clear - Limpa a tela.\n");
+
             executei_comando = 1;
         }
 
@@ -363,7 +366,7 @@ int content() {
             //Printa o nome dos integrantes e do projeto
 
             printf("\n Projeto0 - Estrutura Virtual de Diretorios.");
-            printf("\n -Isaque Torres\n -Joao Aguirra\n -Mateus Santos\n -Rodrigo Ventura\n\n Copyright 2019-2019 - Sistemas operacionais I\n\n ");
+            printf("\n\n - Isaque Torres\n - Joao Aguirra\n - Mateus Santos\n - Rodrigo Ventura\n\n");
         }
 
         if (strcmp(comando,"poweroff") == 0) {
