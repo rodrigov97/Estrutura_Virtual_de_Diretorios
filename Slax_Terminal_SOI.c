@@ -272,8 +272,32 @@ int content() {
 
         if (strcmp(comando,"ls") == 0) {
 
-            //ls(parametro1);
             executei_comando = 1;
+
+            //Lista os arquivos do diretorio atual
+
+            int i = 0;
+
+            if (parametro1 != NULL && strcmp(parametro1, "-l") != 0) {
+
+                printf(" Comando invalido digite 'ls' ou 'ls -l' para listar os arquivos.\n");
+            }
+
+            for (i = 1; i < ENTRADAS_MAX; i++) {
+
+                if (parent[i] == posicao_atual) {
+
+                    if (parametro1 == NULL) {
+
+                        printf("-- %s\n", nome[i]);
+                    }
+                    
+                    if (strcmp(parametro1, "-l") == 0) {
+
+                        printf("-- %s | %s - %s\n", nome[i], data[i], hora[i]);
+                    }
+                }
+            }
         }
 
         if(strcmp(comando, "time") == 0) {
