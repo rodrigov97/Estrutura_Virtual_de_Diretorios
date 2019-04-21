@@ -2,11 +2,12 @@
 
 Simulador de um terminal Linux que cria uma estrutura de diretorios virtuais que permite a execução dos seguintes comandos:
 <br>
+<br>
 mkdir - Cria um diretorio.<br>
 ren - Renomeia um diretorio.<br>
 rmdir - Remove um diretorio.<br>
 cd - Chama o diretorio.<br>
-pwd - Exibe a posicao na estrutura de diretorios.<br>   
+pwd - Exibe a posicao na estrutura de diretorios.<br>
 ls - Lista os arquivos presentes do diretório atual.<br>
 time - Exbe data e horas atuais.<br>
 clear - Limpa a tela.<br>
