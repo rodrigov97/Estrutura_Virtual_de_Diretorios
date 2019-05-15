@@ -9,7 +9,7 @@ rmdir - Remove um diretorio.<br>
 cd - Chama o diretorio.<br>
 pwd - Exibe a posicao na estrutura de diretorios.<br>
 ls - Lista os arquivos presentes do diretório atual.<br>
-time - Exbe data e horas atuais.<br>
+time - Exibe data e horas atuais.<br>
 clear - Limpa a tela.<br>
 local - Mostra os diretorios existesntes e seus enderecos.<br>
 copyright - Exibe o nome dos autores do programa.<br>
